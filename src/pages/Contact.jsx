@@ -33,6 +33,7 @@ export default function Contact() {
 
           <aside className="flex-1">
             <h3 className="text-xl md:text-2xl text-primary font-semibold">Our Office</h3>
+            <h3 className="text-xl md:text-2xl text-primary font-semibold">I'm still writing the css for this page</h3>
             <div className="relative h-40 md:h-60 rounded-md bg-backdrop overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.347312891393!2d7.4688640738489225!3d9.032047588943644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b9d7d7024ff%3A0xbd2f3a36f8723b9a!2sKilishi%20Market!5e0!3m2!1sen!2sng!4v1756383580513!5m2!1sen!2sng"
