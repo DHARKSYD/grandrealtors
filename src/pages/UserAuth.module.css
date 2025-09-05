@@ -1,0 +1,74 @@
+.authWrapper {
+  max-width: 400px;
+  margin: 4rem auto;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.authWrapper h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.authWrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.input2 {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.authWrapper button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.authWrapper button:hover {
+  background: #1e40af;
+}
+
+.authWrapper p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.authWrapper a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.authWrapper a:hover {
+  color: #1e40af;
+}

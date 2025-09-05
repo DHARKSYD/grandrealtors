@@ -1,0 +1,152 @@
+.footerInfoWrapper {
+  max-width: 1100px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 2.5rem 2rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.5rem 1.2rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card:hover, .card:focus {
+  box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+  transform: translateY(-2px) scale(1.03);
+  outline: 2px solid #2563eb;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+}
+
+.card p {
+  color: #333;
+  font-size: 1rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 0.75rem;
+  max-width: 540px;
+  width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+  animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.closeButton:hover {
+  color: #2563eb;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #2563eb;
+}
+
+.modalContent {
+  font-size: 1.05rem;
+  color: #222;
+  line-height: 1.7;
+}
+
+.linkButton {
+  display: inline-block;
+  margin: 1rem 0 0 0;
+  padding: 0.5rem 1.2rem;
+  background: #2563eb;
+  color: #fff !important;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.linkButton:hover {
+  background: #1e40af;
+}
+
+.actionButton {
+  display: inline-block;
+  margin: 1rem 0 0 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: #fff;
+  color: #2563eb;
+  border: 1.5px solid #2563eb;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.actionButton:hover {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+@media (max-width: 700px) {
+  .footerInfoWrapper {
+    padding: 1rem 0.5rem;
+  }
+  .modal {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

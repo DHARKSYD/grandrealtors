@@ -1,0 +1,138 @@
+.site-footer {
+  background: linear-gradient(to bottom, #111827, #000000);
+  color: #ccc;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+/* Footer Container */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 0.3rem;
+}
+
+.social-icons a {
+  display: inline-block;
+  font-size: 20px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ffcc00;
+}
+
+/* Footer Links - Now Grid Based */
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffcc00;
+}
+
+.footer-links2 .highlighted {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* App Buttons */
+.app-buttons img {
+  width: 140px;
+  margin: 5px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.app-buttons img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer Text */
+.footer-text {
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Logos */
+.footer-logos img {
+  width: 120px;
+  margin: 10px;
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .footer-links {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets */
+  }
+
+  .app-buttons img,
+  .footer-logos img {
+    width: 110px;
+    margin: 6px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 20px 10px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(4, 2fr); 
+    gap: 8px;
+  }
+
+  .footer-links2 {
+    text-align: center;
+    color: yellow;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+
+  .app-buttons img,
+  .footer-logos img {
+    width: 90px;
+    margin: 4px;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    padding: 5px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,141 @@
+.page {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.titleSection {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.iconLarge {
+  width: 4rem;
+  height: 4rem;
+  color: #2563eb;
+  margin: 0 auto 1rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formCard {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  outline: none;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.benefitsCard,
+.tipsCard {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tipsCard {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.benefitItem,
+.tipItem {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.benefitItemIcon,
+.tipItemIcon {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.tipHeader {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.tipText {
+  color: #1d4ed8;
+  font-size: 0.875rem;
+  list-style: disc;
+  padding-left: 1rem;
+}

@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(55, 65, 81);
+  margin-bottom: 0.5rem;
+}
+
+.sliderWrapper {
+  padding: 0 0.5rem;
+}
+
+.priceRange {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128);
+  margin-top: 0.5rem;
+}
+
+.select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.optionButton {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(209, 213, 219);
+  background-color: white;
+  color: rgb(55, 65, 81);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.optionButton:hover {
+  border-color: rgb(59, 130, 246);
+}
+
+.active {
+  background-color: rgb(37, 99, 235);
+  color: white;
+  border-color: rgb(37, 99, 235);
+}
+
+.clearButton {
+  width: 100%;
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0.5rem;
+  }
+  .optionGrid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem;
+  }
+  .filterBlock {
+    margin-bottom: 1rem;
+  }
+  .clearButton {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}

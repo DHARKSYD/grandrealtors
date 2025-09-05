@@ -1,0 +1,387 @@
+.container {
+  min-height: 60vh;
+}
+
+.heroSection {
+  background: linear-gradient(
+    to bottom right,
+    #2563eb,
+    rgb(44, 71, 129),
+    rgb(4, 8, 20)
+  );
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 38, 255, 0.08);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroText {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 4rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #e0e7ef;
+  margin-bottom: 0;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroForm {
+  width: 100%;
+  max-width: 64em;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .heroForm {
+    padding: 2rem 2.5rem;
+  }
+}
+
+.statsSection {
+  background: #fff;
+  padding: 6rem 0 8rem 0;
+}
+
+.statsGrid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 7rem;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  min-width: 180px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.statIcon {
+  width: 4rem;
+  height: 4rem;
+  background: #dbeafe;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.statIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #2563eb;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  color: #6b7280;
+  font-size: 1rem;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.featuredTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureSubtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #463b3b;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3em;
+}
+
+.propertyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ViewAllPropertiesButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #463b3b;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3em;
+}
+
+.featureSection {
+  background: #fff;
+  padding: 3rem 0 2rem 0;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 6em;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  min-width: 180px;
+}
+
+.featureIcon {
+  width: 3rem;
+  height: 3rem;
+  background: #dbeafe;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.featureIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #2563eb;
+}
+
+.featureValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.featureLabel {
+  color: #6b7280;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Featured Properties Section */
+.featureSection {
+  background: #f9fafb;
+  padding: 3rem 0 2rem 0;
+}
+
+.featureHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.ctaSection {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  background: linear-gradient(to bottom, #2563eb, rgb(44, 71, 129), #111827);
+  color: white;
+}
+
+.ctaTitle {
+  font-size: 2.2em;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  gap: 2rem;
+}
+
+.ctaSubtitle {
+  font-size: 1.2em;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  gap: 2rem;
+  color: rgb(194, 194, 194);
+}
+
+.ctaButtons {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .heroSection {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  .statsGrid {
+    gap: 2rem;
+  }
+  .propertyGrid,
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .ctaButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  .statsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 3rem 0;
+  }
+  .statsGrid {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .featuredTitle{
+    text-align: center;
+  }
+
+  .featureSubtitle{
+    text-align: center;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
+  .ctaSection {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .ctaTitle {
+    font-size: 2.2em;
+    display: flex;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .ctaSubtitle {
+    font-size: 1.2em;
+    display: flex;
+    text-align: center;
+    gap: 2rem;
+    color: rgb(194, 194, 194);
+  }
+  .ctaButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .ViewAllPropertiesButton {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 1.1rem;
+  }
+  .ctaSection {
+    padding: 1rem 0.25rem;
+  }
+}
