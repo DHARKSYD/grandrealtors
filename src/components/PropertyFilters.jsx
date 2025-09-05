@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
+import { Slider } from '@/components/ui/Slider';
 import styles from './PropertyFilters.module.css';
 
 const PropertyFilters = ({ filters, onFiltersChange }) => {
