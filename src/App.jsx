@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Toaster } from '@/components/ui/toaster';
-import { useToast } from '@/components/ui/use-toast';
+//import { Toaster } from '@/components/ui/toaster';
+//import { useToast } from '@/components/ui/use-toast';
 import Header from '@/components/Header';
 import HomePage from '@/pages/HomePage';
 import SearchPage from '@/pages/SearchPage';
@@ -38,7 +38,7 @@ function App() {
             <Route path="/footer-info" element={<FooterInfoPage />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-          <Toaster />
+          
           <Footer />
         </div>
       </Router>
@@ -47,3 +47,4 @@ function App() {
 }
 
 export default App;
+//<Toaster />
