@@ -28,6 +28,20 @@
   flex: 1;
 }
 
+@media (max-width: 480px){
+  .flexRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .input {
+    width: 80%;
+  }
+  .input2{
+    width: 80%;
+  }
+}
+
 .input2 {
   padding: 0.75rem 1rem;
   border: 1px solid #d1d5db;
@@ -71,4 +85,74 @@
 
 .authWrapper a:hover {
   color: #1e40af;
+}
+
+.formCustom {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.profilePicWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profilePicLabel {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePicPreview {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px dashed #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.profilePicImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profilePicPlaceholder {
+  font-size: 2.5rem;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.profilePicText {
+  font-size: 0.95rem;
+  color: #2563eb;
+  text-align: center;
+}
+
+
+
+@media (max-width: 600px) {
+  .authWrapper {
+    max-width: 98vw;
+    margin: 2rem auto;
+    padding: 1.5rem 0.5rem;
+  }
+  .formCustom {
+    gap: 1rem;
+  }
+  .profilePicPreview {
+    width: 70px;
+    height: 70px;
+  }
 }

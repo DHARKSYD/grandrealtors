@@ -3,6 +3,8 @@
 .pageWrapper {
   min-height: 100vh;
   background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
 }
 
 .headerWrapper {
@@ -14,7 +16,7 @@
 .headerInner {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .titleWrapper {
@@ -106,6 +108,9 @@
     flex-direction: row;
     align-items: center;
   }
+  .resultsCount {
+    padding: 0.5rem;
+}
 }
 
 .resultsCount {
@@ -152,15 +157,11 @@
 
 .gridLayout {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5rem;
 }
 
-@media (min-width: 768px) {
-  .gridLayout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+
 
 @media (min-width: 1280px) {
   .gridLayout {

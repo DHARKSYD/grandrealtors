@@ -15,7 +15,6 @@ const Header = () => {
     { path: '/sell', label: 'Sell', icon: Tag },
     { path: '/search', label: 'Search', icon: Search },
     { path: '/favorites', label: 'Favorites', icon: Heart },
-    { path: '/contact', label: 'Contact', icon: Phone },
   ];
 
   const user = JSON.parse(localStorage.getItem("grandRealtors_user"));
@@ -51,12 +50,12 @@ const Header = () => {
 
         <div className={styles.buttons}>
           <Link to="/signin">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className={styles.btnsNOdesk}>
               Sign In
             </Button>
           </Link>
           <Link to="/signup">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className={styles.btnsNOdesk}>
               Sign Up
             </Button>
           </Link>
@@ -119,36 +118,18 @@ const Header = () => {
           })}
           <div className={styles.buttons}>
             <Link to="/signin" className={styles.mobileAuthBtn}>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="tiny">
                 Sign In
               </Button>
             </Link>
             <Link to="/signup" className={styles.mobileAuthBtn}>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="tiny">
                 Sign Up
               </Button>
             </Link>
           </div>
 
-          {/* Profile Picture in mobile menu */}
-          <Link to="/profile" style={{ marginTop: 16, display: "flex", alignItems: "right", justifyContent: "right" }}>
-            {user && user.profilePic ? (
-              <img
-                src={user.profilePic}
-                alt="Profile"
-                style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  border: "2px solid #2563eb",
-                  background: "#f3f4f6",
-                }}
-              />
-            ) : (
-              <User style={{ width: 32, height: 32, color: "#2563eb" }} />
-            )}
-          </Link>
+          
         </motion.div>
       )}
     </header>

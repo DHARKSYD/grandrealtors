@@ -30,9 +30,9 @@ const SellPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     toast({
-      title: '🚧 Feature Coming Soon!',
+      title: '🚧 ALERT!',
       description:
-        "Property submission is still in development! 🚀",
+        "We have recieved your application, our agent will contact you soon! 🚀",
     });
   };
 

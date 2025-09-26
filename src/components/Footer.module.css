@@ -2,7 +2,7 @@
   background: linear-gradient(to bottom, #111827, #000000);
   color: #ccc;
   text-align: center;
-  padding: 30px 10px;
+  padding: 15px 5px;
 }
 
 /* Footer Container */
@@ -89,12 +89,12 @@
   margin: 10px;
 }
 
-/* ========== RESPONSIVE STYLES ========== */
+/* RESPONSIVE STYLES*/
 
 /* Tablets */
 @media (max-width: 900px) {
   .footer-links {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets */
+    grid-template-columns: repeat(3, 1fr); 
   }
 
   .app-buttons img,
@@ -111,7 +111,8 @@
   }
 
   .footer-links {
-    grid-template-columns: repeat(4, 2fr); 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
   }
 

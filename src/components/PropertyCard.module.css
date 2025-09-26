@@ -107,43 +107,17 @@
   flex-direction: column;
 }
 
-.cardList {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 2rem;
-}
-
-.cardList .imageWrapper {
-  flex: 0 0 260px;
-  height: 180px;
-}
-
-.cardList .propertyImage {
-  height: 100%;
-  object-fit: cover;
-}
-
-.cardList .details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 .heartFavorite {
-  color: #ef4444 !important; /* Tailwind's red-500 */
-  fill: #ef4444 !important;
+  color: #ef4444;
+  fill: #ef4444;
 }
 .heartNotFavorite {
-  color: #4b5563 !important; /* Tailwind's gray-600 */
-  fill: none !important;
+  color: #4b5563;
+  fill: none;
 }
 
-/* Optionally, tweak padding/margins for .cardList children for better appearance */
+/* Tweak .cardList children for better appearance */
 
 @media (max-width: 900px) {
   .card, .cardGrid, .cardList {
@@ -154,16 +128,10 @@
 }
 
 @media (max-width: 600px) {
-  .card {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    padding: 0.5rem;
+
+  .cardList{
+    border-radius: 10%;
+    padding: 3rem;
   }
-  .details {
-    padding: 1rem;
-  }
-  .imageWrapper {
-    height: 8rem;
-  }
+  
 }

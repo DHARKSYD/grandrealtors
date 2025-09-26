@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 import styles from "./UserAuth.module.css";
 
 const UserSignUp = () => {
@@ -8,6 +9,7 @@ const UserSignUp = () => {
     lastName: "",
     email: "",
     sex: "",
+    occupation: "",
     password: "",
     confirmPassword: "",
   });
@@ -47,17 +49,23 @@ const UserSignUp = () => {
       setError("Please fill in all fields.");
       return;
     }
+    // Save user to localStorage
     localStorage.setItem(
       "grandRealtors_user",
       JSON.stringify({ ...form, profilePic })
     );
+    toast({
+      title: "Sign up successful!",
+      description: "Welcome to GrandRealtors.",
+    });
     navigate("/profile");
   };
 
   return (
     <div className={styles.authWrapper}>
       <h2>Create Your Account</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.formCustom}>
+        
         <div className={styles.flexRow}>
           <input
             className={styles.input}
@@ -78,7 +86,6 @@ const UserSignUp = () => {
             required
           />
         </div>
-
         <select
           className={styles.input}
           name="sex"
@@ -89,8 +96,33 @@ const UserSignUp = () => {
           <option value="">Select Sex</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
-          <option value="Other">Mentally Ill</option>
+          <option value="Other">Other</option>
         </select>
+
+<div className={styles.profilePicWrapper}>
+          <label htmlFor="profilePicInput" className={styles.profilePicLabel}>
+            <div className={styles.profilePicPreview}>
+              {profilePic ? (
+                <img
+                  src={profilePic}
+                  alt="Profile Preview"
+                  className={styles.profilePicImg}
+                />
+              ) : (
+                <span className={styles.profilePicPlaceholder}>+</span>
+              )}
+            </div>
+            <input
+              id="profilePicInput"
+              type="file"
+              accept="image/*"
+              onChange={handlePicChange}
+              style={{ display: "none" }}
+            />
+            <span className={styles.profilePicText}>Add Profile Picture</span>
+          </label>
+        </div>
+
         <input
           className={styles.input}
           type="text"

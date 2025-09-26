@@ -228,7 +228,7 @@ const FooterInfoPage = () => {
 
   return (
     <div className={styles.footerInfoWrapper}>
-      <h1 className={styles.title}>GrandRealtors Footer Information</h1>
+      <h1 className={styles.title}>GrandRealtors Information</h1>
       <div className={styles.grid}>
         {sections.map((section) => (
           <div

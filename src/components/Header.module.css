@@ -75,7 +75,7 @@
 }
 
 .buttons {
-  display: none;
+  display: flex;
   gap: 0.5rem;
 }
 
@@ -146,7 +146,6 @@
   }
   .buttons {
     flex-direction: row;
-    gap: 0.5rem;
     width: 100%;
   }
 
@@ -159,17 +158,25 @@
   }
   .mobileMenu {
     display: block;
-    width: 100vw;
+    width: 40vw;
+    height: auto;
     background: #fff;
     position: absolute;
     top: 4rem;
-    left: 0;
+    right: 0;
     z-index: 100;
-    padding: 1rem 0;
+    border-radius: 1rem;
+    padding: 1rem;
   }
 
   .mobileAuthBtn {
     display: flex;
+    text-decoration: none;
+    font-weight: 800;
+    
+  }
+  hover .mobileAuthBtn {
+    background-color: #f3f4f6;
   }
 
   .desktopOnly {

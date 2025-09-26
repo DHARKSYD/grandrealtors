@@ -91,7 +91,7 @@
 
 @media (min-width: 768px) {
   .pageContent {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .cardGrid {
@@ -288,7 +288,7 @@
 
 .mainImage {
   width: 100%;
-  height: 320px;
+  height: 420px;
   object-fit: cover;
   border-radius: 0.75rem;
   margin-bottom: 0.5rem;
@@ -409,19 +409,25 @@
 .agentAvatar {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
   object-fit: cover;
   margin-bottom: 0.5rem;
+  color: blue;
 }
 
 .agentName {
   font-weight: 700;
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .agentRole {
   color: #4b5563;
   font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .agentRating {
@@ -430,8 +436,16 @@
 }
 
 .agentBtn {
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #e5e7e9;
+  box-sizing: border-box;
 }
 
 .agentNote {
@@ -469,5 +483,53 @@
   to {
     opacity: 1;
     transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .detailMain {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .detailLeft, .detailRight {
+    width: 100%;
+    min-width: 0;
+  }
+  .mainImage {
+    height: 400px;
+  }
+  .propertyInfoCard,
+  .agentCard,
+  .summaryCard {
+    padding: 1rem;
+  }
+  .detailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .detailPageWrapper {
+    padding: 0.5rem;
+    margin: 0;
+  }
+  .mainImage {
+    height: 280px;
+  }
+  .propertyInfoCard,
+  .agentCard,
+  .summaryCard {
+    padding: 0.75rem;
+  }
+  .thumbnail {
+    width: 48px;
+    height: 36px;
+  }
+  .detailHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }

@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Filter, Grid, List, MapPin, ShoppingCart } from 'lucide-react';
+import { Filter, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SearchForm from '@/components/SearchForm';
 import PropertyCard from '@/components/PropertyCard';
@@ -20,6 +20,20 @@ const SearchPage = () => {
     location: '',
   });
 
+  // Automatically set viewMode based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 900) {
+        setViewMode('list');
+      } else {
+        setViewMode('grid');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const filteredProperties = useMemo(() => {
     return properties.filter((property) => {
       const price = parseInt(property.price.replace(/[₦,]/g, ''));
@@ -36,7 +50,6 @@ const SearchPage = () => {
 
   return (
     <div className={styles.pageWrapper}>
-
       <div className={styles.mainContentWrapper}>
         <div className={styles.mainContent}>
           {/* Sidebar Filters */}
@@ -50,7 +63,7 @@ const SearchPage = () => {
                   onClick={() => setShowFilters(false)}
                   className="lg:hidden"
                 >
-                  ×
+                  
                 </Button>
               </div>
               <PropertyFilters filters={filters} onFiltersChange={setFilters} />
@@ -66,32 +79,7 @@ const SearchPage = () => {
                   Showing results for your search criteria in Nigeria
                 </p>
               </div>
-
-              <div className={styles.controls}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowFilters(true)}
-                  className="lg:hidden"
-                >
-                  <Filter className="w-4 h-4 mr-2" />
-                  Filters
-                </Button>
-                <div className={styles.viewToggle}>
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`${styles.toggleButton} ${viewMode === 'grid' ? styles.activeToggle : ''}`}
-                  >
-                    <Grid className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`${styles.toggleButton} ${viewMode === 'list' ? styles.activeToggle : ''}`}
-                  >
-                    <List className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
+              
             </div>
 
             {filteredProperties.length > 0 ? (

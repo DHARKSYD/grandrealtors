@@ -32,7 +32,6 @@ const Footer = () => (
         <a href="/footer-info#accessibility">Accessibility</a>
         <a href="/footer-info#mediaroom">Media Room</a>
         <a href="/footer-info#feedback">Feedback</a>
-        <a href="/footer-info#sell">Sell with us</a>
         <a href="/footer-info#agent-support">Agent support</a>
         <a href="/footer-info#privacy">Privacy</a>
         <a href="/footer-info#terms">Terms</a>

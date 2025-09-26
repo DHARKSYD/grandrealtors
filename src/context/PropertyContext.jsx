@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const PropertyContext = createContext();
 
@@ -14,280 +14,427 @@ export const PropertyProvider = ({ children }) => {
   const [properties, setProperties] = useState([]);
   const [featuredProperties, setFeaturedProperties] = useState([]);
   const [favorites, setFavorites] = useState([]);
-  const [loading, setLoading] = useState(false); // No DB call now, so no need to set loading true initially
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch properties from local/static source (you can change this later to fetch from your own API)
-    // Example dummy data
-    const initialProperties = [
-  {
-    "id": 1,
-    "title": "Modern 3 Bedroom Flat",
-    "location": "Victoria Island, Lagos",
-    "price": "₦180,000,000",
-    "bedrooms": 3,
-    "bathrooms": 3,
-    "sqft": 250,
-    "type": "Apartment",
-    "featured": true,
-    "latitude": 6.4281,
-    "longitude": 3.4216
-  },
-  {
-    "id": 2,
-    "title": "Spacious 4 Bedroom Bungalow",
-    "location": "Asokoro, Abuja",
-    "price": "₦250,000,000",
-    "bedrooms": 4,
-    "bathrooms": 4,
-    "sqft": 700,
-    "type": "Bungalow",
-    "featured": true,
-    "latitude": 9.0346,
-    "longitude": 7.5248
-  },
-  {
-    "id": 3,
-    "title": "Luxury Penthouse",
-    "location": "Banana Island, Lagos",
-    "price": "₦600,000,000",
-    "bedrooms": 5,
-    "bathrooms": 6,
-    "sqft": 1200,
-    "type": "Penthouse",
-    "featured": true,
-    "latitude": 6.4321,
-    "longitude": 3.4480
-  },
-  {
-    "id": 4,
-    "title": "Affordable Mini Flat",
-    "location": "Yaba, Lagos",
-    "price": "₦35,000,000",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "sqft": 60,
-    "type": "Mini Flat",
-    "featured": false,
-    "latitude": 6.5095,
-    "longitude": 3.3781
-  },
-  {
-    "id": 5,
-    "title": "Classic 2 Bedroom Apartment",
-    "location": "Gwarinpa, Abuja",
-    "price": "₦60,000,000",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "sqft": 120,
-    "type": "Apartment",
-    "featured": false,
-    "latitude": 9.1044,
-    "longitude": 7.4033
-  },
-  {
-    "id": 6,
-    "title": "Modern Studio Apartment",
-    "location": "Lekki, Lagos",
-    "price": "₦40,000,000",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "sqft": 50,
-    "type": "Studio",
-    "featured": false,
-    "latitude": 6.4426,
-    "longitude": 3.4671
-  },
-  {
-    "id": 7,
-    "title": "Family 3 Bedroom Flat",
-    "location": "Wuse 2, Abuja",
-    "price": "₦90,000,000",
-    "bedrooms": 3,
-    "bathrooms": 2,
-    "sqft": 200,
-    "type": "Flat",
-    "featured": false,
-    "latitude": 9.0662,
-    "longitude": 7.4898
-  },
-  {
-    "id": 8,
-    "title": "Luxury 6 Bedroom Mansion",
-    "location": "Ikoyi, Lagos",
-    "price": "₦900,000,000",
-    "bedrooms": 6,
-    "bathrooms": 7,
-    "sqft": 2000,
-    "type": "Mansion",
-    "featured": true,
-    "latitude": 6.4483,
-    "longitude": 3.4373
-  },
-  {
-    "id": 9,
-    "title": "Affordable 2 Bedroom Bungalow",
-    "location": "Garki, Abuja",
-    "price": "₦55,000,000",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "sqft": 150,
-    "type": "Bungalow",
-    "featured": false,
-    "latitude": 9.0310,
-    "longitude": 7.4906
-  },
-  {
-    "id": 10,
-    "title": "Modern Duplex",
-    "location": "Magodo, Lagos",
-    "price": "₦200,000,000",
-    "bedrooms": 4,
-    "bathrooms": 5,
-    "sqft": 400,
-    "type": "Duplex",
-    "featured": true,
-    "latitude": 6.6233,
-    "longitude": 3.3796
-  },
-  {
-    "id": 11,
-    "title": "Serviced 3 Bedroom Apartment",
-    "location": "Maitama, Abuja",
-    "price": "₦120,000,000",
-    "bedrooms": 3,
-    "bathrooms": 3,
-    "sqft": 180,
-    "type": "Apartment",
-    "featured": false,
-    "latitude": 9.0817,
-    "longitude": 7.5044
-  },
-  {
-    "id": 12,
-    "title": "Detached 5 Bedroom House",
-    "location": "Ajah, Lagos",
-    "price": "₦170,000,000",
-    "bedrooms": 5,
-    "bathrooms": 6,
-    "sqft": 600,
-    "type": "Detached",
-    "featured": false,
-    "latitude": 6.4675,
-    "longitude": 3.6022
-  },
-  {
-    "id": 13,
-    "title": "Classic 4 Bedroom Terrace",
-    "location": "Gudu, Abuja",
-    "price": "₦110,000,000",
-    "bedrooms": 4,
-    "bathrooms": 4,
-    "sqft": 350,
-    "type": "Terrace",
-    "featured": false,
-    "latitude": 9.0183,
-    "longitude": 7.4798
-  },
-  {
-    "id": 14,
-    "title": "Affordable 1 Bedroom Studio",
-    "location": "Surulere, Lagos",
-    "price": "₦25,000,000",
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "sqft": 40,
-    "type": "Studio",
-    "featured": false,
-    "latitude": 6.5003,
-    "longitude": 3.3544
-  },
-  {
-    "id": 15,
-    "title": "Luxury 3 Bedroom Flat",
-    "location": "Jabi, Abuja",
-    "price": "₦150,000,000",
-    "bedrooms": 3,
-    "bathrooms": 3,
-    "sqft": 220,
-    "type": "Flat",
-    "featured": true,
-    "latitude": 9.0821,
-    "longitude": 7.4294
-  },
-  {
-    "id": 16,
-    "title": "Modern 2 Bedroom Apartment",
-    "location": "Ikeja, Lagos",
-    "price": "₦80,000,000",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "sqft": 110,
-    "type": "Apartment",
-    "featured": false,
-    "latitude": 6.6018,
-    "longitude": 3.3515
-  },
-  {
-    "id": 17,
-    "title": "Classic 5 Bedroom Duplex",
-    "location": "Asokoro, Abuja",
-    "price": "₦300,000,000",
-    "bedrooms": 5,
-    "bathrooms": 6,
-    "sqft": 800,
-    "type": "Duplex",
-    "featured": true,
-    "latitude": 9.0450,
-    "longitude": 7.5300
-  },
-  {
-    "id": 18,
-    "title": "Affordable 2 Bedroom Flat",
-    "location": "Ogba, Lagos",
-    "price": "₦45,000,000",
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "sqft": 90,
-    "type": "Flat",
-    "featured": false,
-    "latitude": 6.6342,
-    "longitude": 3.3515
-  },
-  {
-    "id": 19,
-    "title": "Luxury 4 Bedroom Penthouse",
-    "location": "Wuse, Abuja",
-    "price": "₦400,000,000",
-    "bedrooms": 4,
-    "bathrooms": 5,
-    "sqft": 950,
-    "type": "Penthouse",
-    "featured": true,
-    "latitude": 9.0575,
-    "longitude": 7.4826
-  },
-  {
-    "id": 20,
-    "title": "Modern 3 Bedroom Bungalow",
-    "location": "Lekki, Lagos",
-    "price": "₦130,000,000",
-    "bedrooms": 3,
-    "bathrooms": 3,
-    "sqft": 300,
-    "type": "Bungalow",
-    "featured": false,
-    "latitude": 6.4413,
-    "longitude": 3.4781
-  }
-];
-    setProperties(initialProperties);
-    setFeaturedProperties(initialProperties.filter(p => p.featured).slice(0, 6));
-
-    const savedFavorites = localStorage.getItem('grandRealtors_favorites');
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
-    }
+    setFeaturedProperties(
+      properties.filter((p) => p.featured)
+    );
+  }, [properties]);
+  useEffect(() => {
+    setProperties([
+      {
+        id: 1,
+        title: "Modern 3 Bedroom Flat",
+        location: "Victoria Island, Lagos",
+        price: "₦180,000,000",
+        bedrooms: 3,
+        bathrooms: 3,
+        sqft: 250,
+        type: "Apartment",
+        featured: true,
+        latitude: 6.4281,
+        longitude: 3.4216,
+        cover: "/assets/properties/1a.jpg",
+        images: [
+          "/assets/properties/1a.jpg",
+          "/assets/properties/1b.jpg",
+          "/assets/properties/1c.jpg",
+          "/assets/properties/1d.jpg",
+          "/assets/properties/1e.jpg"
+        ]
+      },
+      {
+        id: 2,
+        title: "Spacious 4 Bedroom Bungalow",
+        location: "Asokoro, Abuja",
+        price: "₦250,000,000",
+        bedrooms: 4,
+        bathrooms: 4,
+        sqft: 700,
+        type: "Bungalow",
+        featured: true,
+        latitude: 9.0346,
+        longitude: 7.5248,
+        cover: "/assets/properties/2a.jpg",
+        images: [
+          "/assets/properties/2a.jpg",
+          "/assets/properties/2b.jpg",
+          "/assets/properties/2c.jpg",
+          "/assets/properties/2d.jpg",
+          "/assets/properties/2e.jpg"
+        ]
+      },
+      {
+        id: 3,
+        title: "Luxury Penthouse",
+        location: "Banana Island, Lagos",
+        price: "₦600,000,000",
+        bedrooms: 5,
+        bathrooms: 6,
+        sqft: 1200,
+        type: "Penthouse",
+        featured: true,
+        latitude: 6.4321,
+        longitude: 3.4480,
+        cover: "/assets/properties/3a.jpg",
+        images: [
+          "/assets/properties/3a.jpg",
+          "/assets/properties/3b.jpg",
+          "/assets/properties/3c.jpg",
+          "/assets/properties/3d.jpg",
+          "/assets/properties/3e.jpg",
+          "/assets/properties/3f.jpg"
+        ]
+      },
+      {
+        id: 4,
+        title: "Affordable 2 Bedroom Apartment",
+        location: "Yaba, Lagos",
+        price: "₦60,000,000",
+        bedrooms: 2,
+        bathrooms: 2,
+        sqft: 120,
+        type: "Apartment",
+        featured: false,
+        latitude: 6.5146,
+        longitude: 3.3869,
+        cover: "/assets/properties/4a.jpg",
+        images: [
+          "/assets/properties/4a.jpg",
+          "/assets/properties/4b.jpg",
+          "/assets/properties/4c.jpg",
+          "/assets/properties/4d.jpg"
+        ]
+      },
+      {
+        id: 5,
+        title: "Detached Duplex",
+        location: "Gwarinpa, Abuja",
+        price: "₦350,000,000",
+        bedrooms: 4,
+        bathrooms: 5,
+        sqft: 800,
+        type: "Duplex",
+        featured: true,
+        latitude: 6.4367,
+        longitude: 3.5366,
+        cover: "/assets/properties/5a.jpg",
+        images: [
+          "/assets/properties/5a.jpg",
+          "/assets/properties/5b.jpg",
+          "/assets/properties/5c.jpg",
+          "/assets/properties/5d.jpg",
+          "/assets/properties/5e.jpg"
+        ]
+      },
+      {
+        id: 6,
+        title: "Terrace House",
+        location: "Gwarinpa, Abuja",
+        price: "₦120,000,000",
+        bedrooms: 3,
+        bathrooms: 3,
+        sqft: 350,
+        type: "Terrace",
+        featured: false,
+        latitude: 9.1021,
+        longitude: 7.3986,
+        cover: "/assets/properties/6a.jpg",
+        images: [
+          "/assets/properties/6a.jpg",
+          "/assets/properties/6b.jpg",
+          "/assets/properties/6c.jpg",
+          "/assets/properties/6d.jpg"
+        ]
+      },
+      {
+        id: 7,
+        title: "Commercial Office Space",
+        location: "Central Area, Abuja",
+        price: "₦500,000,000",
+        bedrooms: 0,
+        bathrooms: 4,
+        sqft: 2000,
+        type: "Commercial",
+        featured: false,
+        latitude: 9.0578,
+        longitude: 7.4951,
+        cover: "/assets/properties/7a.jpg",
+        images: [
+          "/assets/properties/7a.jpg",
+          "/assets/properties/7b.jpg",
+          "/assets/properties/7c.jpg",
+          "/assets/properties/7d.jpg"
+        ]
+      },
+      {
+        id: 8,
+        title: "Studio Apartment",
+        location: "Surulere, Lagos",
+        price: "₦35,000,000",
+        bedrooms: 1,
+        bathrooms: 1,
+        sqft: 60,
+        type: "Studio",
+        featured: false,
+        latitude: 6.5000,
+        longitude: 3.3500,
+        cover: "/assets/properties/8a.jpg",
+        images: [
+          "/assets/properties/8a.jpg",
+          "/assets/properties/8b.jpg",
+          "/assets/properties/8c.jpg",
+          "/assets/properties/8d.jpg"
+        ]
+      },
+      {
+        id: 9,
+        title: "Land for Sale",
+        location: "Ajah, Lagos",
+        price: "₦80,000,000",
+        bedrooms: 0,
+        bathrooms: 0,
+        sqft: 1500,
+        type: "Land",
+        featured: false,
+        latitude: 6.4675,
+        longitude: 3.6021,
+        cover: "/assets/properties/9a.jpg",
+        images: [
+          "/assets/properties/9a.jpg",
+          "/assets/properties/9b.jpg",
+          "/assets/properties/9c.jpg",
+          "/assets/properties/9d.jpg"
+        ]
+      },
+      {
+        id: 10,
+        title: "Semi-Detached Duplex",
+        location: "Magodo, Lagos",
+        price: "₦220,000,000",
+        bedrooms: 4,
+        bathrooms: 4,
+        sqft: 600,
+        type: "Semi-Detached",
+        featured: false,
+        latitude: 6.6018,
+        longitude: 3.3715,
+        cover: "/assets/properties/10a.jpg",
+        images: [
+          "/assets/properties/10a.jpg",
+          "/assets/properties/10b.jpg",
+          "/assets/properties/10c.jpg",
+          "/assets/properties/10d.jpg"
+        ]
+      },
+      {
+        id: 11,
+        title: "Town House",
+        location: "Ikoyi, Lagos",
+        price: "₦400,000,000",
+        bedrooms: 5,
+        bathrooms: 5,
+        sqft: 1100,
+        type: "Townhouse",
+        featured: true,
+        latitude: 6.4541,
+        longitude: 3.4246,
+        cover: "/assets/properties/11a.jpg",
+        images: [
+          "/assets/properties/11a.jpg",
+          "/assets/properties/11b.jpg",
+          "/assets/properties/11c.jpg",
+          "/assets/properties/11d.jpg"
+        ]
+      },
+      {
+        id: 12,
+        title: "Luxury Detached Mansion",
+        location: "Maitama, Abuja",
+        price: "₦950,000,000",
+        bedrooms: 7,
+        bathrooms: 8,
+        sqft: 3000,
+        type: "Mansion",
+        featured: true,
+        latitude: 9.0765,
+        longitude: 7.4926,
+        cover: "/assets/properties/12a.jpg",
+        images: [
+          "/assets/properties/12a.jpg",
+          "/assets/properties/12b.jpg",
+          "/assets/properties/12c.jpg",
+          "/assets/properties/12d.jpg",
+          "/assets/properties/12e.jpg",
+          "/assets/properties/12f.jpg"
+        ]
+      },
+      {
+        id: 13,
+        title: "Affordable Mini Flat",
+        location: "Ogba, Lagos",
+        price: "₦25,000,000",
+        bedrooms: 1,
+        bathrooms: 1,
+        sqft: 45,
+        type: "Apartment",
+        featured: false,
+        latitude: 6.6342,
+        longitude: 3.3376,
+        cover: "/assets/properties/13a.jpg",
+        images: [
+          "/assets/properties/13a.jpg",
+          "/assets/properties/13b.jpg",
+          "/assets/properties/13c.jpg",
+          "/assets/properties/13d.jpg"
+        ]
+      },
+      {
+        id: 14,
+        title: "Detached Bungalow",
+        location: "Abeokuta, Ogun",
+        price: "₦70,000,000",
+        bedrooms: 3,
+        bathrooms: 3,
+        sqft: 400,
+        type: "Bungalow",
+        featured: false,
+        latitude: 7.1600,
+        longitude: 3.3500,
+        cover: "/assets/properties/14a.jpg",
+        images: [
+          "/assets/properties/14a.jpg",
+          "/assets/properties/14b.jpg",
+          "/assets/properties/14c.jpg",
+          "/assets/properties/14d.jpg",
+          "/assets/properties/14e.jpg",
+          "/assets/properties/14f.jpg"
+        ]
+      },
+      {
+        id: 15,
+        title: "Commercial Shop",
+        location: "Onitsha, Anambra",
+        price: "₦55,000,000",
+        bedrooms: 0,
+        bathrooms: 1,
+        sqft: 80,
+        type: "Commercial",
+        featured: false,
+        latitude: 6.1456,
+        longitude: 6.8020,
+        cover: "/assets/properties/15a.jpg",
+        images: [
+          "/assets/properties/15a.jpg",
+          "/assets/properties/15b.jpg",
+          "/assets/properties/15c.jpg",
+          "/assets/properties/15d.jpg"
+        ]
+      },
+      {
+        id: 16,
+        title: "Luxury 5 Bedroom Duplex",
+        location: "Enugu, Enugu",
+        price: "₦320,000,000",
+        bedrooms: 5,
+        bathrooms: 6,
+        sqft: 950,
+        type: "Duplex",
+        featured: true,
+        latitude: 6.5244,
+        longitude: 7.5086,
+        cover: "/assets/properties/16a.jpg",
+        images: [
+          "/assets/properties/16a.jpg",
+          "/assets/properties/16b.jpg",
+          "/assets/properties/16c.jpg",
+          "/assets/properties/16d.jpg",
+          "/assets/properties/16e.jpg",
+          "/assets/properties/16f.jpg"
+        ]
+      },
+      {
+        id: 17,
+        title: "Affordable Land",
+        location: "Ibadan, Oyo",
+        price: "₦40,000,000",
+        bedrooms: 0,
+        bathrooms: 0,
+        sqft: 1200,
+        type: "Land",
+        featured: false,
+        latitude: 7.3775,
+        longitude: 3.9470,
+        cover: "/assets/properties/17a.jpg",
+        //images: [
+          //"/assets/properties/17a.jpg",
+          //"/assets/properties/17b.jpg",
+          //"/assets/properties/17c.jpg",
+          //"/assets/properties/17d.jpg"]
+      },
+      {
+        id: 18,
+        title: "Mini Studio Apartment",
+        location: "Calabar, Cross River",
+        price: "₦28,000,000",
+        bedrooms: 1,
+        bathrooms: 1,
+        sqft: 40,
+        type: "Studio",
+        featured: false,
+        latitude: 4.9589,
+        longitude: 8.3269,
+        cover: "/assets/properties/18a.jpg",
+        images: [
+          "/assets/properties/18a.jpg",
+          "/assets/properties/18b.jpg",
+          "/assets/properties/18c.jpg",
+          "/assets/properties/18d.jpg"
+        ]
+      },
+      {
+        id: 19,
+        title: "Terrace Duplex",
+        location: "Port Harcourt, Rivers",
+        price: "₦210,000,000",
+        bedrooms: 4,
+        bathrooms: 5,
+        sqft: 700,
+        type: "Terrace",
+        featured: true,
+        latitude: 4.8242,
+        longitude: 7.0336,
+        cover: "/assets/properties/19a.jpg",
+        images: [
+          "/assets/properties/19a.jpg",
+          "/assets/properties/19b.jpg",
+          "/assets/properties/19c.jpg",
+          "/assets/properties/19d.jpg",
+          "/assets/properties/19e.jpg"
+        ]
+      },
+      {
+        id: 20,
+        title: "Luxury Penthouse",
+        location: "Ikoyi, Lagos",
+        price: "₦850,000,000",
+        bedrooms: 6,
+        bathrooms: 7,
+        sqft: 1500,
+        type: "Penthouse",
+        featured: true,
+        latitude: 6.4541,
+        longitude: 3.4246,
+        cover: "/assets/properties/20a.jpg",
+        images: [
+          "/assets/properties/20a.jpg",
+          "/assets/properties/20b.jpg",
+          "/assets/properties/20c.jpg",
+          "/assets/properties/20d.jpg"
+        ]
+      }
+    ]);
   }, []);
 
   useEffect(() => {

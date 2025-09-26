@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Filter, Grid, List, MapPin, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -19,6 +19,20 @@ const BuyPage = () => {
     propertyType: '',
     location: '',
   });
+
+  // Detect screen size and set viewMode
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 900) {
+        setViewMode('list');
+      } else {
+        setViewMode('grid');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const buyableProperties = useMemo(() => {
     return properties.filter(property => {
@@ -42,7 +56,6 @@ const BuyPage = () => {
             <ShoppingCart className={styles.icon} />
             <h1 className={styles.title}>Properties for Sale</h1>
           </div>
-          <SearchForm />
         </div>
       </div>
 
@@ -73,32 +86,7 @@ const BuyPage = () => {
                   Explore homes, lands, and commercial properties across Nigeria.
                 </p>
               </div>
-
-              <div className={styles.controls}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowFilters(true)}
-                  className="lg:hidden"
-                >
-                  <Filter className="w-4 h-4 mr-2" />
-                  Filters
-                </Button>
-                <div className={styles.viewToggle}>
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`${styles.toggleButton} ${viewMode === 'grid' ? styles.activeToggle : ''}`}
-                  >
-                    <Grid className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`${styles.toggleButton} ${viewMode === 'list' ? styles.activeToggle : ''}`}
-                  >
-                    <List className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
+              {/* Hide view toggle buttons */}
             </div>
 
             {buyableProperties.length > 0 ? (

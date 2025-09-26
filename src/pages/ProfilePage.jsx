@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 import styles from "./UserAuth.module.css";
 
 const ProfilePage = () => {
@@ -7,6 +9,7 @@ const ProfilePage = () => {
   );
   const [error, setError] = useState("");
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   if (!user) {
     return (
@@ -28,6 +31,16 @@ const ProfilePage = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  // LOG OUT FUNCTION
+  const handleLogout = () => {
+    localStorage.removeItem("grandRealtors_user");
+    toast({
+      title: "Logged out",
+      description: "You have been logged out.",
+    });
+    navigate("/signin");
   };
 
   return (
@@ -88,6 +101,14 @@ const ProfilePage = () => {
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
         >
           Change Photo
+        </button>
+        {/* LOG OUT BUTTON */}
+        <button
+          className={styles.button}
+          style={{ marginTop: 16, width: 180, background: "#ef4444" }}
+          onClick={handleLogout}
+        >
+          Log Out
         </button>
         {error && (
           <div style={{ color: "red", fontSize: "0.95rem", marginTop: 8 }}>

@@ -301,7 +301,7 @@
 
 .gridLayout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Always 3 per row on desktop */
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
