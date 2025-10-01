@@ -23,7 +23,7 @@ const SearchForm = () => {
     { value: '', label: 'Any Type' },
     { value: 'Duplex', label: 'Duplex' },
     { value: 'Apartment', label: 'Apartment' },
-    { value: 'Masion', label: 'Masion'},
+    { value: 'Mansion', label: 'Mansion'},
     { value: 'Bungalow', label: 'Bungalow' },
     { value: 'Terrace', label: 'Terrace' },
     { value: 'Semi-Detached', label: 'Semi-Detached' },

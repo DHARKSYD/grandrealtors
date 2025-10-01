@@ -16,11 +16,14 @@ import Footer from '@/components/Footer';
 import FooterInfoPage from '@/pages/FooterInfoPage';
 import ProfilePage from '@/pages/ProfilePage';
 import Contact from '@/pages/Contact';
+import ScrollToTop from '@/components/ScrollToTop';
+import { useSelector } from 'react-redux'
 
 function App() {
   return (
     <PropertyProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen bg-gray-50">
           <Header />
           <Routes>
@@ -40,6 +43,7 @@ function App() {
           <Toaster />
           <Footer />
         </div>
+        <ScrollToTop />
       </Router>
     </PropertyProvider>
   );

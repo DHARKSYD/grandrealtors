@@ -77,18 +77,24 @@
 }
 
 @media (max-width: 600px) {
+  
   .container {
-    padding: 0.5rem;
+    width: 60%;
+    padding: 0.3rem;
   }
   .optionGrid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: (3fr, 1fr) !important;
     gap: 0.5rem;
   }
+  .optionButton{
+    padding: 0.2rem;
+  }
   .filterBlock {
-    margin-bottom: 1rem;
+    grid-template-columns: (3fr, 1fr);
+    margin-bottom: 0.5rem;
   }
   .clearButton {
     font-size: 1rem;
-    padding: 0.75rem;
+    padding: 0.2rem;
   }
 }

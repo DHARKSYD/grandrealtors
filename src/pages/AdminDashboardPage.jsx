@@ -7,6 +7,17 @@ import { usePropertyContext } from '@/context/PropertyContext';
 import styles from './AdminDashboardPage.module.css';
 
 const AdminDashboardPage = () => {
+  const [profilePic, setProfilePic] = useState(null);
+
+const handlePicChange = (e) => {
+    const file = e.target.files[10];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setProfilePic(reader.result);
+      reader.readAsDataURL(file);
+    }
+  };
+
   const { toast } = useToast();
   const { properties, setProperties } = usePropertyContext();
   const [activeTab, setActiveTab] = useState('overview');
@@ -67,7 +78,7 @@ const AdminDashboardPage = () => {
   const AdminCard = ({ title, value, icon, action, isLoading }) => {
     const IconComponent = icon;
     return (
-      <motion.div 
+      <motion.div
         className={styles.card}
         whileHover={{ y: -5 }}
       >
@@ -90,9 +101,9 @@ const AdminDashboardPage = () => {
       case 'overview':
         return (
           <div className={styles.grid3}>
-            <AdminCard title="Total Properties" value="--" icon={Home} isLoading={false} action={{label: "Refresh Listings", onClick: () => toast({ title: "Refreshing listings..." })}} />
-            <AdminCard title="Total Sales Value (Est.)" value="₦15.5B" icon={DollarSign} action={{label: "View Sales Reports", onClick: () => toast({ title: "🚧 Under Development" })}} />
-            <AdminCard title="Leads/Calls (Month)" value="128" icon={Phone} action={{label: "Manage Leads", onClick: () => toast({ title: "🚧 Under Development" })}} />
+            <AdminCard title="Total Properties" value="--" icon={Home} isLoading={false} action={{ label: "Refresh Listings", onClick: () => toast({ title: "Refreshing listings..." }) }} />
+            <AdminCard title="Total Sales Value (Est.)" value="₦15.5B" icon={DollarSign} action={{ label: "View Sales Reports", onClick: () => toast({ title: "🚧 Under Development" }) }} />
+            <AdminCard title="Leads/Calls (Month)" value="128" icon={Phone} action={{ label: "Manage Leads", onClick: () => toast({ title: "🚧 Under Development" }) }} />
           </div>
         );
       case 'listings':
@@ -153,7 +164,7 @@ const AdminDashboardPage = () => {
                     </div>
                     <div className={`${styles.formGroup} ${styles.addFormGridFull}`}>
                       <label>Price (Numeric value, e.g., 150000000)</label>
-                      <input name="price" value={form.price} onChange={handleChange} required />
+                      <input name="price" type='number' value={form.price} onChange={handleChange} required />
                     </div>
                     <div className={styles.formGroup}>
                       <label>Bedrooms</label>
@@ -189,10 +200,32 @@ const AdminDashboardPage = () => {
                       <label>Description</label>
                       <textarea name="description" value={form.description || ''} onChange={handleChange} />
                     </div>
-                    <div className={`${styles.formGroup} ${styles.addFormGridFull}`}>
-                      <label>Image URL (Optional)</label>
-                      <input name="image" value={form.image || ''} onChange={handleChange} />
+
+
+                    <div className={styles.profilePicWrapper}>
+                      <label htmlFor="profilePicInput" className={styles.profilePicLabel}>
+                        <div className={styles.profilePicPreview}>
+                          {profilePic ? (
+                            <img
+                              src={profilePic}
+                              alt="Profile Preview"
+                              className={styles.profilePicImg}
+                            />
+                          ) : (
+                            <span className={styles.profilePicPlaceholder}>+</span>
+                          )}
+                        </div>
+                        <input
+                          id="profilePicInput"
+                          type="file"
+                          accept="image/*"
+                          onChange={handlePicChange}
+                          style={{ display: "none" }}
+                        />
+                        <span className={styles.profilePicText}>Add Profile Picture</span>
+                      </label>
                     </div>
+
                     <div className={styles.formGroup}>
                       <label>Latitude (Optional)</label>
                       <input name="latitude" value={form.latitude || ''} onChange={handleChange} />

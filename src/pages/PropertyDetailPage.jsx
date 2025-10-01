@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { usePropertyContext } from '@/context/PropertyContext';
 import { Button } from '@/components/ui/button';
-import { Heart, MapPin, Bed, Bath, Square, Phone } from 'lucide-react';
+import { Heart, MapPin, Bed, Bath, Square, Phone, MessageSquareText } from 'lucide-react';
 import { GiFamilyHouse } from "react-icons/gi";
 import styles from './PropertyDetailPage.module.css';
 
@@ -10,7 +10,9 @@ const PropertyDetailPage = () => {
   const { id } = useParams();
   const { properties, toggleFavorite, favorites } = usePropertyContext();
   const navigate = useNavigate();
-  const [showAuthError, setShowAuthError] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [protectedUrl, setProtectedUrl] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(0);
 
   // find the property by id
   const property = properties.find((p) => p.id === parseInt(id, 10));
@@ -28,23 +30,17 @@ const PropertyDetailPage = () => {
     );
   }
 
-  // 4 sub-pictures
-  //    fallback to [property.cover] if no images array exists
+  // fallback gallery
   const gallery = property.images?.length ? property.images : [property.cover];
-
-  const [selectedImage, setSelectedImage] = useState(0);
 
   // Handler for protected actions
   const handleProtectedAction = (e, url) => {
     if (!user) {
       e.preventDefault();
-      setShowAuthError(true);
-      setTimeout(() => {
-        setShowAuthError(false);
-        navigate('/signin');
-      }, 1500);
+      setProtectedUrl(url);
+      setShowAuthModal(true);
     }
-    // else, allow default action (link works)
+    // else, allow default action
   };
 
   return (
@@ -163,14 +159,14 @@ const PropertyDetailPage = () => {
             </div>
 
             {/* Call Agent */}
-            <a
-              href="https://call.whatsapp.com/voice/mNtNEpLDgp8gbanhLEIiWq"
+            <Link
+              to="https://call.whatsapp.com/voice/mNtNEpLDgp8gbanhLEIiWq"
               target="_blank"
               className={styles.agentBtn}
               onClick={e => handleProtectedAction(e, "https://call.whatsapp.com/voice/mNtNEpLDgp8gbanhLEIiWq")}
             >
               <Phone /> Call Agent
-            </a>
+            </Link>
             {/* Send Message */}
             <a
               href="https://wa.me/2349069792022?text=Hello%20I%20am%20interested%20in%20the%20property%20"
@@ -178,18 +174,12 @@ const PropertyDetailPage = () => {
               className={styles.agentBtn}
               onClick={e => handleProtectedAction(e, "https://wa.me/2349069792022?text=Hello%20I%20am%20interested%20in%20the%20property%20")}
             >
-              Send Message
+              <MessageSquareText color="#73ee3f" /> Send Message
             </a>
 
             <div className={styles.agentNote}>
               Typically responds within 2 hours
             </div>
-            {/* Auth error message */}
-            {showAuthError && (
-              <div style={{ color: "red", marginTop: 8, fontWeight: 500 }}>
-                Please sign in to contact the agent.
-              </div>
-            )}
           </div>
 
           <div className={styles.summaryCard}>
@@ -212,6 +202,29 @@ const PropertyDetailPage = () => {
           </div>
         </div>
       </div>
+
+      {/* ---- Auth Modal ---- */}
+      {showAuthModal && (
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modalContent}>
+            <h2>Sign In Required</h2>
+            <p>You need to sign in before contacting the agent. Would you like to sign in now?</p>
+            <div className={styles.modalActions}>
+              <Button onClick={() => navigate('/signin')}>Sign In</Button>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  // Close modal and DO NOT open the protected URL
+                  setShowAuthModal(false);
+                  setProtectedUrl(null);
+                }}
+              >
+                Continue Browsing
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

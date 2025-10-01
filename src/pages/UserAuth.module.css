@@ -140,6 +140,14 @@
   text-align: center;
 }
 
+.mobileAuthBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 1000;
+    height: 10vh;
+  }
+
 
 
 @media (max-width: 600px) {

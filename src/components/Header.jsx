@@ -66,7 +66,7 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Profile Picture at the end */}
+        {/* Profile Picture */}
         <Link to="/profile" style={{ display: "flex", alignItems: "right" }}>
           {user && user.profilePic ? (
             <img
@@ -128,8 +128,6 @@ const Header = () => {
               </Button>
             </Link>
           </div>
-
-          
         </motion.div>
       )}
     </header>

@@ -9,7 +9,7 @@ const PropertyFilters = ({ filters, onFiltersChange }) => {
     { value: '', label: 'Any Type' },
     { value: 'Duplex', label: 'Duplex' },
     { value: 'Apartment', label: 'Apartment' },
-    { value: 'Masion', label: 'Masion'},
+    { value: 'Mansion', label: 'Mansion'},
     { value: 'Bungalow', label: 'Bungalow' },
     { value: 'Terrace', label: 'Terrace' },
     { value: 'Semi-Detached', label: 'Semi-Detached' },
@@ -64,12 +64,15 @@ const PropertyFilters = ({ filters, onFiltersChange }) => {
   };
 
   return (
+      <div  className={styles.grid_view}>
+        
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className={styles.container}
     >
+
       {/* Price Range */}
       <div className={styles.filterBlock}>
         <label className={styles.label}>
@@ -167,6 +170,7 @@ const PropertyFilters = ({ filters, onFiltersChange }) => {
         Clear All Filters
       </Button>
     </motion.div>
+      </div>
   );
 };
 

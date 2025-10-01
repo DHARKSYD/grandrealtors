@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import styles from "./UserAuth.module.css";
+import { Button } from "@/components/ui/button";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(() =>
@@ -16,6 +17,12 @@ const ProfilePage = () => {
       <div className={styles.authWrapper}>
         <h2>No Profile Found</h2>
         <p>Please sign up to create your profile.</p>
+
+        <Link to="/signup" className={styles.mobileAuthBtn}>
+          <Button variant="outline" size="lg">
+            Sign Up
+          </Button>
+        </Link>
       </div>
     );
   }
@@ -33,14 +40,26 @@ const ProfilePage = () => {
     }
   };
 
-  // LOG OUT FUNCTION
+  // LOG OUT FUNCTION (just end session, keep account data)
   const handleLogout = () => {
-    localStorage.removeItem("grandRealtors_user");
+    localStorage.removeItem("grandRealtors_loggedIn"); // ✅ only clears session
     toast({
       title: "Logged out",
       description: "You have been logged out.",
     });
     navigate("/signin");
+  };
+
+  // DELETE ACCOUNT FUNCTION (remove everything)
+  const handleDeleteAccount = () => {
+    localStorage.removeItem("grandRealtors_user");
+    localStorage.removeItem("grandRealtors_loggedIn");
+    toast({
+      title: "Account deleted",
+      description: "Your account has been permanently removed.",
+      variant: "destructive",
+    });
+    navigate("/signup");
   };
 
   return (
@@ -63,9 +82,6 @@ const ProfilePage = () => {
         <h2 style={{ marginBottom: 8, fontWeight: 700, fontSize: "1.5rem" }}>
           {user.firstName} {user.lastName}
         </h2>
-        <div style={{ color: "#2563eb", fontWeight: 500, marginBottom: 16 }}>
-          {user.occupation}
-        </div>
         <div
           style={{
             background: "#f9fafb",
@@ -83,11 +99,9 @@ const ProfilePage = () => {
             <div>
               <strong>Sex:</strong> <span>{user.sex}</span>
             </div>
-            <div>
-              <strong>Occupation:</strong> <span>{user.occupation}</span>
-            </div>
           </div>
         </div>
+
         <input
           type="file"
           accept="image/*"
@@ -102,14 +116,25 @@ const ProfilePage = () => {
         >
           Change Photo
         </button>
+
         {/* LOG OUT BUTTON */}
         <button
           className={styles.button}
-          style={{ marginTop: 16, width: 180, background: "#ef4444" }}
+          style={{ marginTop: 16, width: 180, background: "#3b82f6" }}
           onClick={handleLogout}
         >
           Log Out
         </button>
+
+        {/* DELETE ACCOUNT BUTTON */}
+        <button
+          className={styles.button}
+          style={{ marginTop: 16, width: 180, background: "#ef4444" }}
+          onClick={handleDeleteAccount}
+        >
+          Delete Account
+        </button>
+
         {error && (
           <div style={{ color: "red", fontSize: "0.95rem", marginTop: 8 }}>
             {error}

@@ -108,12 +108,12 @@
   gap: 10px;
 }
 
-/* Hide Sign In / Sign Up by default on desktop */
+/* Hide Sign In */
 .mobileAuthBtn {
   display: none;
 }
 
-/* Hide List Your Property button only on mobile */
+
 .desktopOnly {
   display: block;
 }
@@ -158,7 +158,7 @@
   }
   .mobileMenu {
     display: block;
-    width: 40vw;
+    width: 45vw;
     height: auto;
     background: #fff;
     position: absolute;

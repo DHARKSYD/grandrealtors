@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import styles from "./UserAuth.module.css";
 
@@ -15,6 +15,7 @@ const UserSignIn = () => {
     e.preventDefault();
     setError("");
     const user = JSON.parse(localStorage.getItem("grandRealtors_user"));
+
     if (!user) {
       setError("No account found. Please sign up first.");
       toast({
@@ -24,17 +25,20 @@ const UserSignIn = () => {
       });
       return;
     }
-    if (
-      user.email === form.email &&
-      user.password === form.password
-    ) {
+
+    if (user.email === form.email && user.password === form.password) {
       toast({
         title: "Sign in successful!",
         description: `Welcome back, ${user.firstName}!`,
       });
       navigate("/profile");
     } else {
-      
+      setError("Invalid email or password.");
+      toast({
+        title: "Sign in failed",
+        description: "Invalid email or password.",
+        variant: "destructive",
+      });
     }
   };
 
@@ -69,6 +73,15 @@ const UserSignIn = () => {
           Sign In
         </button>
       </form>
+
+      <div style={{ marginTop: "1rem", textAlign: "center" }}>
+        <p>
+          Don’t have an account?{" "}
+          <Link to="/signup" className={styles.link}>
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

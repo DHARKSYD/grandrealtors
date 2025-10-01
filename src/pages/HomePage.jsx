@@ -7,8 +7,44 @@ import PropertyCard from '@/components/PropertyCard';
 import { usePropertyContext } from '@/context/PropertyContext';
 import { Link } from "react-router-dom";
 import styles from './HomePage.module.css';
-
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 const HomePage = () => {
+
+  
+  const { properties } = usePropertyContext();
+  const location = useLocation(); 
+
+  const [filters, setFilters] = useState({
+    priceRange: [0, 1000000000],
+    bedrooms: '',
+    bathrooms: '',
+    propertyType: '',
+    location: '',
+  });
+
+  // 👇 When arriving from HomePage SearchForm, prefill filters
+  useEffect(() => {
+    if (location.state?.searchData) {
+      setFilters(prev => ({
+        ...prev,
+        ...location.state.searchData,
+      }));
+    }
+  }, [location.state]);
+
+// Handler for protected actions
+  const handleProtectedAction = (e, url) => {
+    if (!user) {
+      e.preventDefault();
+      setShowAuthError(true);
+      setTimeout(() => {
+        setShowAuthError(false);
+      }, 2000);
+    }
+    // else, allow default action (link works)
+  };
+
   const { featuredProperties } = usePropertyContext();
 
   const stats = [
@@ -90,6 +126,8 @@ const HomePage = () => {
         </div>
       </section>
 
+      
+
       {/* Featured Properties */}
       <section className={styles.featuredSection}>
         <motion.div
@@ -118,9 +156,11 @@ const HomePage = () => {
         </div>
 
         <div className={styles.ViewAllPropertiesButton}>
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-            View All Properties
-          </Button>
+          <Link to="/search" aria-label="View all properties">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+              View All Properties
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -183,11 +223,13 @@ const HomePage = () => {
                 List Your Property With Us
               </Button>
             </Link>
-            <a href="mailto:davidbenjaminorendu.com">
-              <Button size="lg" className="border-white text-white hover:bg-white hover:text-gray-900">
+            <Link to="gmial.com"
+                target="_blank">
+              <Button size="lg" className="border-white text-white hover:bg-white hover:text-gray-900"
+                onClick={e => handleProtectedAction(e, "gmail.com")}>
                 Send Us An E-mail
               </Button>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </section>

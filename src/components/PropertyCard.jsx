@@ -16,7 +16,7 @@ const PropertyCard = ({ property, viewMode = 'grid' }) => {
   // ✅ main/cover image is always property.cover
   const mainImage = property.cover
     ? property.cover
-    : 'https://images.unsplash.com/photo-1703023428152-133db49ad592';
+    : '';
 
   // ✅ sub-images for optional small thumbnails
   const images =
@@ -113,7 +113,7 @@ const PropertyCard = ({ property, viewMode = 'grid' }) => {
               <Bath style={{ marginRight: 4 }} /> {property.bathrooms}
             </span>
             <span className={styles.statItem}>
-              <Square style={{ marginRight: 4 }} /> {property.sqft}
+              <Square style={{ marginRight: 4 }} /> {property.sqft} sqft
             </span>
           </div>
         </div>

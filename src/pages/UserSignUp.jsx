@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import styles from "./UserAuth.module.css";
 
@@ -9,7 +9,6 @@ const UserSignUp = () => {
     lastName: "",
     email: "",
     sex: "",
-    occupation: "",
     password: "",
     confirmPassword: "",
   });
@@ -32,8 +31,8 @@ const UserSignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    if (form.password.length < 6) {
-      setError("Password must be at least 6 characters.");
+    if (form.password.length < 8) {
+      setError("Password must be at least 8 characters.");
       return;
     }
     if (form.password !== form.confirmPassword) {
@@ -43,7 +42,6 @@ const UserSignUp = () => {
     if (
       !form.firstName ||
       !form.lastName ||
-      !form.occupation ||
       !form.email
     ) {
       setError("Please fill in all fields.");
@@ -125,15 +123,6 @@ const UserSignUp = () => {
 
         <input
           className={styles.input}
-          type="text"
-          name="occupation"
-          placeholder="Occupation"
-          value={form.occupation}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className={styles.input}
           type="email"
           name="email"
           placeholder="Email"
@@ -145,7 +134,7 @@ const UserSignUp = () => {
           className={styles.input}
           type="password"
           name="password"
-          placeholder="Password (min 6 chars)"
+          placeholder="Password (min 8 chars)"
           value={form.password}
           onChange={handleChange}
           required
@@ -167,7 +156,17 @@ const UserSignUp = () => {
         <button className={styles.button} type="submit">
           Sign Up
         </button>
+
       </form>
+      
+        <div style={{ marginTop: "1rem", textAlign: "center" }}>
+        <p>
+          Already have an account?{" "}
+          <Link to="/signin" className={styles.link}>
+            Sign In
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
