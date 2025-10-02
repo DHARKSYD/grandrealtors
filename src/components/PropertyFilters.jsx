@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/Slider';
 import styles from './PropertyFilters.module.css';
+import { label } from 'framer-motion/client';
 
 const PropertyFilters = ({ filters, onFiltersChange }) => {
   const propertyTypes = [
@@ -15,6 +16,7 @@ const PropertyFilters = ({ filters, onFiltersChange }) => {
     { value: 'Semi-Detached', label: 'Semi-Detached' },
     { value: 'Detached', label: 'Detached' },
     { value: 'Penthouse', label: 'Penthouse' },
+    { value: 'Land', label: 'Land' },
     { value: 'Townhouse', label: 'Townhouse' },
     { value: 'Commercial', label: 'Commercial' },
   ];

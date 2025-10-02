@@ -14,31 +14,36 @@ const UserSignIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
+
     const user = JSON.parse(localStorage.getItem("grandRealtors_user"));
 
+    // Case 1: No account found
     if (!user) {
       setError("No account found. Please sign up first.");
       toast({
-        title: "Sign in failed",
+        title: "❌ Sign in failed",
         description: "No account found. Please sign up first.",
         variant: "destructive",
+        duration: 3000,
       });
       return;
     }
 
+    // Case 2: Valid login
     if (user.email === form.email && user.password === form.password) {
       toast({
-        title: "Sign in successful!",
+        title: "✅ Sign in successful",
         description: `Welcome back, ${user.firstName}!`,
+        duration: 3000,
       });
+
+      
+      localStorage.setItem("grandRealtors_loggedIn", "true");
+
       navigate("/profile");
     } else {
-      setError("Invalid email or password.");
-      toast({
-        title: "Sign in failed",
-        description: "Invalid email or password.",
-        variant: "destructive",
-      });
+      
+      setError("Invalid email or password or Your account does not exist.");
     }
   };
 

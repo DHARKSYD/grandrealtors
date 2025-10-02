@@ -5,6 +5,7 @@ import styles from "./UserAuth.module.css";
 import { Button } from "@/components/ui/button";
 
 const ProfilePage = () => {
+  
   const [user, setUser] = useState(() =>
     JSON.parse(localStorage.getItem("grandRealtors_user"))
   );
@@ -42,7 +43,7 @@ const ProfilePage = () => {
 
   // LOG OUT FUNCTION (just end session, keep account data)
   const handleLogout = () => {
-    localStorage.removeItem("grandRealtors_loggedIn"); // ✅ only clears session
+    localStorage.removeItem("grandRealtors_loggedIn"); 
     toast({
       title: "Logged out",
       description: "You have been logged out.",
@@ -117,7 +118,7 @@ const ProfilePage = () => {
           Change Photo
         </button>
 
-        {/* LOG OUT BUTTON */}
+        {/* LOG OUT BUTTON */
         <button
           className={styles.button}
           style={{ marginTop: 16, width: 180, background: "#3b82f6" }}
@@ -125,6 +126,8 @@ const ProfilePage = () => {
         >
           Log Out
         </button>
+        }
+        
 
         {/* DELETE ACCOUNT BUTTON */}
         <button
