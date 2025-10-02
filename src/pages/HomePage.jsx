@@ -11,6 +11,14 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 const HomePage = () => {
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast({
+      title: '🚧 ALERT!',
+      description:
+        "We have recieved your Email, our agent will contact you soon! 🚀",
+    });
+  };
   
   const { properties } = usePropertyContext();
   const location = useLocation(); 
@@ -223,13 +231,7 @@ const HomePage = () => {
                 List Your Property With Us
               </Button>
             </Link>
-            <Link to="gmial.com"
-                target="_blank">
-              <Button size="lg" className="border-white text-white hover:bg-white hover:text-gray-900"
-                onClick={e => handleProtectedAction(e, "gmail.com")}>
-                Send Us An E-mail
-              </Button>
-            </Link>
+            
           </div>
         </motion.div>
       </section>
